@@ -1,0 +1,27 @@
+local Player = game:GetService("Players").LocalPlayer
+local UIS = game:GetService("UserInputService")
+
+-- Hızları ayarlayan fonksiyon
+local function setSpeed(s)
+    if Player.Character and Player.Character:FindFirstChild("Humanoid") then
+        Player.Character.Humanoid.WalkSpeed = s
+    end
+end
+
+-- Klavyedeki sayılara göre hız kontrolü
+UIS.InputBegan:Connect(function(input, processed)
+    if processed then return end
+    if input.KeyCode == Enum.KeyCode.One then 
+        setSpeed(150)
+        print("Hız 150 yapıldı")
+    elseif input.KeyCode == Enum.KeyCode.Two then 
+        setSpeed(250)
+        print("Hız 250 yapıldı")
+    elseif input.KeyCode == Enum.KeyCode.Three then 
+        setSpeed(350)
+        print("Hız 350 yapıldı")
+    elseif input.KeyCode == Enum.KeyCode.Four then 
+        setSpeed(16)
+        print("Hız sıfırlandı")
+    end
+end)
